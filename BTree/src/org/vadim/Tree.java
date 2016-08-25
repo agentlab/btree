@@ -51,11 +51,7 @@ class NodeIndex implements NodeInterface{
 	}
 }
 
-@BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
-@Fork(5)
+
 public class Tree {
 	private static final int t=100;
 	private int height=0;
@@ -101,7 +97,6 @@ public class Tree {
 
 
 
-	@Benchmark
 	public void treeInsert(int key){//При вызове этой функции задача добавляется в пул потоков для добавления
 		Runnable obj=()-> {
 			long time=System.nanoTime();
@@ -166,7 +161,6 @@ public class Tree {
 		return search.submit(obj);
 	}
 
-	@Benchmark
 	public NodeInterface treeSearch(Node x,int key){
 		int i=0;
 
